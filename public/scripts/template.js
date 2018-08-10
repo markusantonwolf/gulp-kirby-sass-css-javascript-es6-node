@@ -1,1 +1,1 @@
-"use strict";console.info("Hello Template");var output="Hello Template";
+"use strict";var output="Hello Template";console.info(output);var content=document.getElementById("content");content.insertAdjacentHTML("beforeend",output);

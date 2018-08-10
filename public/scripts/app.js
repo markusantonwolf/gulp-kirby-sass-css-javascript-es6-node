@@ -1,0 +1,1 @@
+"use strict";var output="Hello App2";console.info(output);var content=document.getElementById("content");content.insertAdjacentHTML("beforeend",output);

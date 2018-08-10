@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
+const livereload = require('gulp-livereload');
 
 const scriptsPath = './application/scripts/**/*.js';
 
@@ -15,7 +16,8 @@ gulp.task('scripts', () => {
       presets: ['env']
     }))
     .pipe(uglify())
-    .pipe(gulp.dest('./public/scripts'));
+    .pipe(gulp.dest('./public/scripts'))
+    .pipe(livereload())
 });
 
 gulp.task('default', () => {
@@ -25,5 +27,6 @@ gulp.task('default', () => {
 gulp.task('watch', ()=>{
   console.log('Watching you...');
   require('./server.js');
+  livereload.listen();
   gulp.watch(scriptsPath, ['scripts']);
 })
