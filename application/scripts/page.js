@@ -1,7 +1,7 @@
 
-const output = 'Hello Page2';
+const outputPage = 'Hello Page2';
 
-console.info(output);
+console.info(outputPage);
 
-const content = document.getElementById('content');
-content.insertAdjacentHTML('beforeend', output);
+const contentPage = document.getElementById('content');
+contentPage.insertAdjacentHTML('beforeend', outputPage);

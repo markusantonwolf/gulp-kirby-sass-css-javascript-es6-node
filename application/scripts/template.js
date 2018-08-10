@@ -1,7 +1,7 @@
 
-const output = 'Hello Template';
+const outputTemplate = 'Hello Template';
 
-console.info(output);
+console.info(outputTemplate);
 
-const content = document.getElementById('content');
-content.insertAdjacentHTML('beforeend', output);
+const contentTemplate = document.getElementById('content');
+contentTemplate.insertAdjacentHTML('beforeend', outputTemplate);

@@ -1,7 +1,7 @@
 
-const output = 'Hello App2';
+const outputApp = 'Hello App2';
 
-console.info(output);
+console.info(outputApp);
 
-const content = document.getElementById('content');
-content.insertAdjacentHTML('beforeend', output);
+const contentApp = document.getElementById('content');
+contentApp.insertAdjacentHTML('beforeend', outputApp);
