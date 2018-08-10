@@ -1,0 +1,1 @@
+"use strict";console.info("Hello Template");var output="Hello Template";
