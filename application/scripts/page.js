@@ -1,5 +1,5 @@
 
-const outputPage = 'Hello Page2';
+const outputPage = 'Hello Page';
 
 console.info(outputPage);
 
