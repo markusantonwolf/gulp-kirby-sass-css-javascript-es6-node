@@ -1,4 +1,7 @@
 const gulp = require('gulp');
+const fs = require('fs');
+const es = require("event-stream");
+
 const uglify = require('gulp-uglify');
 const babel = require('gulp-babel');
 const livereload = require('gulp-livereload');
@@ -24,6 +27,11 @@ const styleSource = './application/styles/**/*.css';
 const scriptsSource = './application/scripts/**/*.js';
 const scriptsDestination = './public/js/';
 const stylesDestination = './public/css/';
+
+const styleSourceFolder = './application/styles/';
+const scriptsSourceFolder = './application/scripts/';
+const scriptsDestinationFolder = './public/js/';
+const stylesDestinationFolder = './public/css/';
 
 // gulp.task('styles', () => {
 //   console.info('Running gulp styles...');
@@ -115,7 +123,26 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
   console.info('Running gulp scripts...');
-  return gulp.src(scriptsSource)
+  scriptsBundle = new Array();
+  scriptsBundle.push({
+    src: scriptsSourceFolder + '*.js',
+    dest: scriptsDestinationFolder,
+    name: 'main.js',
+  });
+  filesInScriptsFolder = fs.readdirSync(scriptsSourceFolder);
+  filesInScriptsFolder.forEach(function (element) {
+    fileInScriptsFolder = fs.statSync('./application/scripts/' + element);
+    if(fileInScriptsFolder.isDirectory()) {
+      scriptsBundle.push({
+        src: scriptsSourceFolder + element + '/*.js',
+        dest: scriptsDestinationFolder,
+        name: element + '.js',
+      });
+    }
+  });
+
+  return scriptsBundle.forEach(function(obj){
+    return gulp.src(obj.src)
     .pipe(plumber(function (error) {
       console.info('Styles ERROR');
       console.info(error);
@@ -124,14 +151,47 @@ gulp.task('scripts', () => {
     .pipe(sourcemaps.init({
       largeFile: true
     }))
-    .pipe(concat('scripts.js'))
+    .pipe(concat(obj.name))
     .pipe(babel({
       presets: ['env']
     }))
     .pipe(uglify())
     .pipe(sourcemaps.write('/maps'))
-    .pipe(gulp.dest(scriptsDestination))
+    .pipe(gulp.dest(obj.dest))
     .pipe(livereload())
+  });
+
+
+  // console.log(scriptsCollection);
+
+  //   for (var i=0; i<items.length; i++) {
+  //     file = fs.statSync('./application/scripts/' + items[i]);
+  //     if (file.isDirectory()) {
+  //       scriptsCollection.push({src: scriptsSourceFolder + '/' + items[i] + '*.js', dest: scriptsDestinationFolder});
+  //       console.info(`directory: ${items[i]}`);
+  //     }
+  //       // console.log(file);
+  //   }
+  // });
+  // console.log(testReturn);
+  //
+  // return gulp.src(scriptsSource)
+  //   .pipe(plumber(function (error) {
+  //     console.info('Styles ERROR');
+  //     console.info(error);
+  //     this.emit('end')
+  //   }))
+  //   .pipe(sourcemaps.init({
+  //     largeFile: true
+  //   }))
+  //   .pipe(concat('scripts.js'))
+  //   .pipe(babel({
+  //     presets: ['env']
+  //   }))
+  //   .pipe(uglify())
+  //   .pipe(sourcemaps.write('/maps'))
+  //   .pipe(gulp.dest(scriptsDestination))
+  //   .pipe(livereload())
 });
 
 gulp.task('clean', () => {

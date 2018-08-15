@@ -1,0 +1,2 @@
+"use strict";var outputApp="Hello App2";console.info(outputApp);var contentApp=document.getElementById("content");contentApp.insertAdjacentHTML("beforeend",outputApp);var outputPage="Hello Page";console.info(outputPage);var contentPage=document.getElementById("content");contentPage.insertAdjacentHTML("beforeend",outputPage);var outputTemplate="Hello Template";console.info(outputTemplate);var contentTemplate=document.getElementById("content");contentTemplate.insertAdjacentHTML("beforeend",outputTemplate);
+//# sourceMappingURL=maps/main.js.map
