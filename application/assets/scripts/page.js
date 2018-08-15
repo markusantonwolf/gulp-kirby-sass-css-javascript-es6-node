@@ -1,5 +1,5 @@
 
-const outputPage = 'Hello Page';
+const outputPage = 'Hello Page concat';
 
 console.info(outputPage);
 

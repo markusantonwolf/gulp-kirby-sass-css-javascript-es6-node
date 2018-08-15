@@ -1,1 +1,0 @@
-{"version":3,"file":"../app.css","sources":["app.scss","_global/_reset.scss"],"sourcesContent":["@import \"./_global/reset.scss\";\r\n","* {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n"],"names":[],"mappings":"ACAA,AAAA,CAAC,AAAC,CACA,MAAM,CAAE,CAAC,CACT,OAAO,CAAE,CAAC,CACX"}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":["console","info"],"mappings":"aAAAA,QAAAC,KAAA","file":"../test.js","sourcesContent":["console.info('Info index.js in folder test222');\n"]}

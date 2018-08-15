@@ -1,0 +1,59 @@
+{
+  "gulp": {
+    "scripts": {
+      "general": {
+        "filename": "main.js",
+        "source": "./application/assets/scripts/",
+        "destination": "./public/assets/js/"
+      },
+      "templates": {
+        "source": "./application/assets/scripts/_templates/",
+        "destination": "./public/assets/js/templates"
+      }
+    },
+    "styles": {
+      "sass": {
+        "source": "./application/assets/styles/*.scss",
+        "destination": "./public/assets/css/"
+      },
+      "css": {
+        "filename": "main.css",
+        "source": "./application/assets/styles/*.css",
+        "destination": "./public/assets/css/"
+      }
+    },
+    "copy": [{
+        "source": "./src/assets/css/*.css",
+        "destination": "./public/assets/css/"
+      },
+      {
+        "source": "./src/assets/js/*.js",
+        "destination": "./public/assets/js/"
+      }
+    ],
+    "clean": [
+      "./public/assets/css/",
+      "./public/assets/js/"
+    ],
+    "watch": [
+      {
+        "source": "./application/assets/scripts/**/**/*.js",
+        "tasks": [
+          "scripts"
+        ]
+      },
+      {
+        "source": "./application/assets/styles/**/*.scss",
+        "tasks": [
+          "styles"
+        ]
+      },
+      {
+        "source": "./application/assets/styles/*.css",
+        "tasks": [
+          "scripts"
+        ]
+      }
+    ]
+  }
+}
